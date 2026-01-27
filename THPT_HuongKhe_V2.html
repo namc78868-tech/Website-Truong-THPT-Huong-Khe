@@ -1,0 +1,1095 @@
+chua<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trường THPT Hương Khê - Nơi Khơi Nguồn Tri Thức</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --glass-bg: rgba(200, 223, 240, 0.6);
+      --glass-border: rgba(0, 95, 115, 0.25);
+      --text-primary: #003d66;
+      --text-secondary: rgba(0, 61, 102, 0.85);
+      --text-tertiary: rgba(0, 61, 102, 0.65);
+      
+      /* Accent Colors */
+      --color-primary: #003d66;
+      --color-primary-light: #005f73;
+      --color-primary-lighter: #007a8c;
+      --color-accent-teal: #0a9396;
+      --color-accent-cyan: #00d4d4;
+      --color-accent-blue: #3b82f6;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--text-primary);
+      background-image: url('11_ipg_80eed.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+    
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(232, 244, 248, 0.4) 0%, rgba(212, 232, 247, 0.4) 25%, rgba(192, 221, 245, 0.4) 50%, rgba(176, 212, 240, 0.4) 75%, rgba(232, 244, 248, 0.4) 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(0, 95, 115, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(0, 61, 102, 0.06) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(0, 150, 180, 0.08) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    main, header, footer {
+      position: relative;
+      z-index: 2;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: var(--glass-bg);
+      border-bottom: 1px solid var(--glass-border);
+      transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    header:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-bottom-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .header-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 16px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.8rem;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #003d66, #005f73, #007a8c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 2px 4px rgba(0, 61, 102, 0.3));
+    }
+
+    .logo span {
+      font-size: 2rem;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      font-size: 0.75rem;
+      line-height: 1.2;
+      font-weight: 900;
+      background: linear-gradient(135deg, rgba(0,61,102,0.95), rgba(0,95,115,0.85));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 1px 3px rgba(0, 61, 102, 0.2));
+    }
+
+    nav {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      position: relative;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      padding: 8px 0;
+    }
+
+    nav a::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #003d66, #005f73, #007a8c);
+      transition: width 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    nav a:hover {
+      color: var(--text-primary);
+      text-shadow: 0 0 20px rgba(0, 95, 115, 0.3);
+    }
+
+    nav a:hover::before {
+      width: 100%;
+    }
+
+    main {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      margin-top: 60px;
+    }
+
+    .hero-content {
+      text-align: center;
+      max-width: 900px;
+    }
+
+    .hero-card {
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      background: linear-gradient(135deg, rgba(200, 223, 240, 0.85), rgba(160, 200, 230, 0.75));
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 32px;
+      padding: 80px 60px;
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 95, 115, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.15) inset;
+      transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      animation: floatIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    @keyframes floatIn {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(0, 95, 115, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-card::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -5%;
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(0, 61, 102, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-card:hover {
+      background: linear-gradient(135deg, rgba(200, 223, 240, 0.9), rgba(160, 200, 230, 0.8));
+      border-color: rgba(0, 95, 115, 0.35);
+      box-shadow: 0 20px 60px rgba(0, 95, 115, 0.25);
+      transform: translateY(-8px);
+    }
+
+    .hero-card-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-title {
+      font-size: 4rem;
+      font-weight: 900;
+      letter-spacing: -2px;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #003d66, #0a9396, #00d4d4);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.1;
+      animation: gradient-shift 8s ease infinite;
+      text-shadow: 0 4px 12px rgba(0, 61, 102, 0.3), 0 2px 6px rgba(0, 95, 115, 0.2);
+      filter: drop-shadow(0 4px 12px rgba(0, 61, 102, 0.2));
+    }
+    
+    @keyframes gradient-shift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .hero-slogan {
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: var(--text-secondary);
+      margin-bottom: 40px;
+      letter-spacing: 0.5px;
+      text-shadow: 0 2px 8px rgba(0, 61, 102, 0.25);
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, rgba(10, 147, 150, 0.4), rgba(0, 212, 212, 0.3));
+      border: 2px solid rgba(10, 147, 150, 0.5);
+      color: #0a9396;
+      padding: 16px 36px;
+      border-radius: 16px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(10, 147, 150, 0.25);
+    }
+
+    .cta-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .cta-button:hover {
+      background: linear-gradient(135deg, rgba(0, 95, 115, 0.35), rgba(0, 150, 180, 0.3));
+      border-color: rgba(0, 95, 115, 0.6);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0, 95, 115, 0.3);
+    }
+
+    .cta-button:hover::before {
+      left: 100%;
+    }
+
+    .glow-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: #005f73;
+      border-radius: 50%;
+      box-shadow: 0 0 16px #005f73, 0 0 32px rgba(0, 95, 115, 0.5);
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    /* Container */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* Section */
+    .section {
+      padding: 100px 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 60px;
+      text-align: center;
+      letter-spacing: -1px;
+      background: linear-gradient(135deg, #003d66 0%, #0a9396 33%, #00d4d4 66%, #3b82f6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 3px 10px rgba(0, 61, 102, 0.2);
+      filter: drop-shadow(0 3px 8px rgba(0, 61, 102, 0.15));
+    }
+
+    /* News Section */
+    .news-section-container {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 30px;
+    }
+
+    .news-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .news-card {
+      background: white;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 24px;
+      padding: 32px;
+      transition: background 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(0, 95, 115, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+      display: flex;
+      gap: 20px;
+    }
+
+    .news-card-image {
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(135deg, rgba(10, 147, 150, 0.2), rgba(0, 212, 212, 0.1));
+      border-radius: 12px;
+      flex-shrink: 0;
+      object-fit: cover;
+    }
+
+    .news-card-content {
+      flex: 1;
+    }
+
+    .news-card:hover {
+      background: white;
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(0, 95, 115, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+    }
+
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .sidebar-card {
+      background: rgba(255, 255, 255, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      padding: 24px;
+      position: relative;
+      box-shadow: 0 8px 24px rgba(0, 95, 115, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .sidebar-card:hover {
+      background: white;
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-4px);
+    }
+
+    .sidebar-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--color-accent-teal);
+      margin-bottom: 12px;
+      text-shadow: 0 1px 3px rgba(10, 147, 150, 0.2);
+    }
+
+    .sidebar-text {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .news-date {
+      display: inline-block;
+      background: linear-gradient(135deg, #0a9396, #00d4d4);
+      color: white;
+      padding: 6px 14px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      letter-spacing: 0.5px;
+    }
+
+    .news-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--text-primary);
+      line-height: 1.4;
+      text-shadow: 0 2px 6px rgba(0, 61, 102, 0.2);
+    }
+
+    .news-description {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .news-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #0a9396;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .news-link::after {
+      content: '→';
+    }
+
+    .news-card:hover .news-link {
+      color: #00d4d4;
+      gap: 10px;
+    }
+
+    .news-card:hover .news-link::after {
+      transform: translateX(4px);
+    }
+
+    /* Info Cards Section */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+    }
+
+    .info-card {
+      background: rgba(255, 255, 255, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 24px;
+      padding: 40px 32px;
+      text-align: center;
+      transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+      box-shadow: 0 12px 40px rgba(0, 95, 115, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+    }
+
+    .info-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      background: transparent;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      display: none;
+    }
+
+    .info-card:hover {
+      background: white;
+      border-color: rgba(10, 147, 150, 0.5);
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 20px 60px rgba(10, 147, 150, 0.4), 0 0 20px rgba(10, 147, 150, 0.3);
+    }
+
+    .info-card:hover .info-title,
+    .info-card:hover .info-text {
+      color: var(--text-primary);
+    }
+
+    .info-card:hover::before {
+      opacity: 1;
+    }
+
+    .info-icon {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+    }
+
+    .info-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--text-primary);
+      text-shadow: 0 2px 6px rgba(0, 61, 102, 0.2);
+    }
+
+    .info-text {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Features Section */
+    .features {
+      padding: 100px 0;
+    }
+
+    .feature-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-top: 60px;
+    }
+
+    .feature-item {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      cursor: pointer;
+    }
+
+    .feature-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(0, 95, 115, 0.2);
+    }
+
+    .feature-number {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      background: rgba(0, 95, 115, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #003d66;
+      flex-shrink: 0;
+      box-shadow: 0 8px 24px rgba(0, 95, 115, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+    }
+
+    .feature-text h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+    }
+
+    .feature-text p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    footer {
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: var(--glass-bg);
+      border-top: 1px solid var(--glass-border);
+      padding: 60px 0 30px;
+      margin-top: 80px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 50px;
+      margin-bottom: 40px;
+    }
+
+    .footer-section h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--text-primary);
+      letter-spacing: 0.5px;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section li {
+      margin-bottom: 12px;
+    }
+
+    .footer-section a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+      padding-left: 8px;
+    }
+
+    .footer-section a::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: #005f73;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .footer-section a:hover {
+      color: var(--text-primary);
+      padding-left: 16px;
+    }
+
+    .footer-section a:hover::before {
+      color: #003d66;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(0, 95, 115, 0.15);
+      padding-top: 30px;
+      text-align: center;
+      color: var(--text-tertiary);
+      font-size: 0.9rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header-content {
+        padding: 12px 24px;
+      }
+
+      nav {
+        gap: 24px;
+      }
+
+      nav a {
+        font-size: 0.9rem;
+      }
+
+      .logo {
+        font-size: 1.4rem;
+      }
+
+      .logo-text {
+        display: none;
+      }
+
+      .container {
+        padding: 0 24px;
+      }
+
+      .hero {
+        margin-top: 60px;
+      }
+
+      .hero-card {
+        padding: 50px 30px;
+      }
+
+      .hero-title {
+        font-size: 2.5rem;
+      }
+
+      .hero-slogan {
+        font-size: 1.2rem;
+      }
+
+      .section {
+        padding: 60px 0;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .news-section-container {
+        grid-template-columns: 1fr;
+      }
+
+
+      .hero-slogan {
+        font-size: 1rem;
+      }
+
+      .section {
+        padding: 40px 0;
+      }
+
+      .section-title {
+        font-size: 1.6rem;
+      }
+
+      .footer-content {
+        gap: 20px;
+      }
+
+      .footer-bottom {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-content">
+      <div class="logo">
+        <span>🎓</span>
+        <div class="logo-text">
+          <div>THPT</div>
+          <div>HƯƠNG KHÊ</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#home">Trang chủ</a>
+        <a href="#news">Tin tức</a>
+        <a href="#about">Về chúng tôi</a>
+        <a href="#features">Thông tin</a>
+        <a href="#contact">Liên hệ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <div class="hero-card">
+          <div class="hero-card-content">
+            <h1 class="hero-title">Trường THPT Hương Khê</h1>
+            <p class="hero-slogan">Nơi Khơi Nguồn Tri Thức</p>
+            <a href="#news" class="cta-button">
+              <span>Khám phá ngay</span>
+              <span class="glow-dot"></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="section" id="news">
+      <div class="container">
+        <h2 class="section-title">Tin Tức & Sự Kiện</h2>
+        <div class="news-section-container">
+          <div class="news-grid">
+            <article class="news-card">
+              <img src="https://thpthuongkhe.hatinh.edu.vn/publish/thumbnail/55327/320x213xdefault/upload/55327/20260119/z7447476364673_db5bdd24a668a21ac76eda3c969f061f_a61ff.jpg" alt="Giáo dục pháp luật" class="news-card-image">
+              <div class="news-card-content">
+                <span class="news-date">19/01/2026</span>
+                <h3 class="news-title">THPT Hương Khê Phối Hợp Tuyên Truyền Giáo Dục Pháp Luật</h3>
+                <p class="news-description">Trường THPT Hương Khê phối hợp tuyên truyền giáo dục pháp luật về trật tự, an toàn giao thông và hướng dẫn kỹ năng lái xe gắn máy an toàn cho học sinh.</p>
+                <a href="https://thpthuongkhe.hatinh.edu.vn/tin-tuc-su-kien/hoat-dong-su-kien/thpt-huong-khe-phoi-hop-tuyen-truyen-giao-duc-phap-luat-ve-trat-tu-an-toan-giao-thong-va-huong-dan-ky-nang-lai-xe-gan-ma.html" class="news-link">Xem chi tiết</a>
+              </div>
+            </article>
+
+            <article class="news-card">
+              <img src="https://thpthuongkhe.hatinh.edu.vn/upload/55327/fck/42000742/image(456).png" alt="STEM/STEAM" class="news-card-image">
+              <div class="news-card-content">
+                <span class="news-date">18/01/2026</span>
+                <h3 class="news-title">Ngày Hội STEM/STEAM và Cuộc Thi Robotics 2025-2026</h3>
+                <p class="news-description">Trường THPT Hương Khê phối hợp tổ chức thành công ngày hội STEM/STEAM và cuộc thi Robotics năm học 2025-2026, tạo cơ hội cho học sinh phát triển kỹ năng sáng tạo.</p>
+                <a href="https://thpthuongkhe.hatinh.edu.vn/tin-tuc-su-kien/hoat-dong-chuyen-mon/truong-thpt-huong-khe-phoi-hop-to-chuc-thanh-cong-ngay-hoi-stem-steam-va-cuoc-thi-robotics-nam-hoc-2025-2026.html" class="news-link">Xem chi tiết</a>
+              </div>
+            </article>
+
+            <article class="news-card">
+              <img src="https://thpthuongkhe.hatinh.edu.vn/publish/thumbnail/55327/256x171xdefault/upload/55327/20251231/z7382728350173_3e67dd7fcf1a5e7b8ddf53dd76712ecf_ec7ea.jpg" alt="Thông báo" class="news-card-image">
+              <div class="news-card-content">
+                <span class="news-date">31/12/2025</span>
+                <h3 class="news-title">Thông Báo Mức Thu Các Khoản Năm Học 2025-2026</h3>
+                <p class="news-description">Thông báo mức thu các khoản theo Nghị Quyết số 179/2025/NQ-HĐND ngày 10/12/2025 của trường THPT Hương Khê nhằm hỗ trợ hoạt động giáo dục.</p>
+                <a href="https://thpthuongkhe.hatinh.edu.vn/tin-tuc-su-kien/hoat-dong-su-kien/thong-bao-muc-thu-cac-khoan-theo-nghi-quyet-so-179-2025-nq-hdnd-ngay-10-12-2025-cua-truong-thpt-huong-khe.html" class="news-link">Xem chi tiết</a>
+              </div>
+            </article>
+
+            <article class="news-card">
+              <img src="https://thpthuongkhe.hatinh.edu.vn/publish/thumbnail/55327/256x171xdefault/upload/55327/20251222/z7352106940794_53756ed76de9f4cd360c4645455d31da_d95f9.jpg" alt="Sự kiện" class="news-card-image">
+              <div class="news-card-content">
+                <span class="news-date">22/12/2025</span>
+                <h3 class="news-title">Chương Trình Nghe Cựu Chiến Bình Kể Chuyện</h3>
+                <p class="news-description">Trường THPT Hương Khê tổ chức chương trình nghe cựu chiến bình kể chuyện nhân kỷ niệm 81 năm thành lập Quân đội nhân dân Việt Nam.</p>
+                <a href="https://thpthuongkhe.hatinh.edu.vn/tin-tuc-su-kien/hoat-dong-su-kien/truong-thpt-huong-khe-to-chuc-chuong-trinh-nghe-cuu-chien-binh-ke-chuyen-nhan-ky-niem-81-nam-thanh-lap-quan-doi-nhan-dan.html" class="news-link">Xem chi tiết</a>
+              </div>
+            </article>
+
+            <article class="news-card">
+              <img src="https://thpthuongkhe.hatinh.edu.vn/upload/55327/fck/42000742/z7210229759865_8246aae0bf5e71abec73a256b50c2df6(1).jpg" alt="Pháp luật" class="news-card-image">
+              <div class="news-card-content">
+                <span class="news-date">10/11/2025</span>
+                <h3 class="news-title">Ngày Pháp Luật Việt Nam 09-11</h3>
+                <p class="news-description">Trường THPT Hương Khê tích cực hưởng ứng ngày Pháp luật Việt Nam 09/11 với các hoạt động giáo dục ý thức thượng tôn pháp luật cho học sinh.</p>
+                <a href="https://thpthuongkhe.hatinh.edu.vn/tin-tuc-su-kien/hoat-dong-su-kien/truong-thpt-huong-khe-to-chuc-ngay-phap-luat-viet-nam-09-11.html" class="news-link">Xem chi tiết</a>
+              </div>
+            </article>
+
+            <article class="news-card">
+              <img src="https://thpthuongkhe.hatinh.edu.vn/upload/55327/fck/42000742/z7126517231525_5485e74c18e741a6fafd489cf0be5d97(1).jpg" alt="Lịch sử" class="news-card-image">
+              <div class="news-card-content">
+                <span class="news-date">17/10/2025</span>
+                <h3 class="news-title">Nhóm Lịch Sử Tổ Chức Trở Về Đồng Lộc</h3>
+                <p class="news-description">Nhóm Lịch sử trường THPT Hương Khê tổ chức hoạt động giáo dục về địa chỉ đỏ Khu di tích lịch sử Đồng Lộc, nơi quá khứ gặp gỡ hiện tại.</p>
+                <a href="https://thpthuongkhe.hatinh.edu.vn/tin-tuc-su-kien/hoat-dong-doan-the/nhom-lich-su-thpt-huong-khe-to-chuc-tro-ve-dong-loc-noi-qua-khu-gap-go-hien-tai.html" class="news-link">Xem chi tiết</a>
+              </div>
+            </article>
+          </div>
+
+          <div class="sidebar">
+            <div class="sidebar-card">
+              <h3 class="sidebar-title">📋 Thông báo mới</h3>
+              <p class="sidebar-text">Cập nhật các thông báo quan trọng từ nhà trường và các hoạt động sắp tới.</p>
+            </div>
+
+            <div class="sidebar-card">
+              <h3 class="sidebar-title">📚 Tài liệu học tập</h3>
+              <p class="sidebar-text">Tải về các tài liệu, bài giảng và hướng dẫn học tập cho học sinh.</p>
+            </div>
+
+            <div class="sidebar-card">
+              <h3 class="sidebar-title">🎯 Lịch học</h3>
+              <p class="sidebar-text">Lịch học, lịch thi và các sự kiện quan trọng trong năm học.</p>
+            </div>
+
+            <div class="sidebar-card">
+              <h3 class="sidebar-title">📞 Liên hệ nhanh</h3>
+              <p class="sidebar-text">Điện thoại: 0357 580 994<br>Email: hoduccuong2011@gmail.com</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+      <div class="container">
+        <h2 class="section-title">Về Trường Chúng Tôi</h2>
+        <div class="info-grid">
+          <div class="info-card">
+            <div class="info-icon">📍</div>
+            <h3 class="info-title">Vị Trí & Thông Tin</h3>
+            <p class="info-text">Trường THPT Hương Khê nằm tại Khối 03, Thị trấn huyện Hương Khê, tỉnh Hà Tĩnh. Điện thoại: 0357580994 - Email: hoduccuong2011@gmail.com</p>
+          </div>
+
+          <div class="info-card">
+            <div class="info-icon">🎯</div>
+            <h3 class="info-title">Tầm Nhìn</h3>
+            <p class="info-text">Xây dựng trường học an toàn, thân thiện, nơi mỗi học sinh phát triển toàn diện về đạo đức, kiến thức, kỹ năng và sức khỏe.</p>
+          </div>
+
+          <div class="info-card">
+            <div class="info-icon">🚀</div>
+            <h3 class="info-title">Sứ Mệnh</h3>
+            <p class="info-text">Giáo dục và đào tạo những công dân có đạo đức tốt, kiến thức vững chắc, kỹ năng sống phong phú và sẵn sàng đóng góp cho xã hội.</p>
+          </div>
+
+          <div class="info-card">
+            <div class="info-icon">💡</div>
+            <h3 class="info-title">Giá Trị Cốt Lõi</h3>
+            <p class="info-text">Chất lượng giáo dục vượt trội, bình đẳng công bằng, tôn trọng đa dạng cá tính, phát triển bền vững và sáng tạo.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section features" id="features">
+      <div class="container">
+        <h2 class="section-title">Những Ưu Điểm Nổi Bật</h2>
+        <div class="feature-list">
+          <div class="feature-item">
+            <div class="feature-number">01</div>
+            <div class="feature-text">
+              <h3>Ngày Hội STEM/STEAM 2025-2026</h3>
+              <p>Trường phối hợp tổ chức thành công ngày hội STEM/STEAM với cuộc thi Robotics, giúp học sinh phát triển tư duy sáng tạo và kỹ năng công nghệ.</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-number">02</div>
+            <div class="feature-text">
+              <h3>Hoạt Động Giáo Dục Toàn Diện</h3>
+              <p>Nhiều hoạt động giáo dục ngoài giờ lên lớp: phòng chống dịch bệnh, giáo dục pháp luật, sức khỏe sinh sản, giáo dục môi trường.</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-number">03</div>
+            <div class="feature-text">
+              <h3>Chương Trình Khám Phá & Trải Nghiệm</h3>
+              <p>Tổ chức các chuyến thăm quan địa chỉ đỏ, hoạt động tư vấn định hướng nghề nghiệp, trải nghiệm thực tế cho học sinh.</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-number">04</div>
+            <div class="feature-text">
+              <h3>Các Kỳ Thi & Cuộc Thi Chất Lượng</h3>
+              <p>Tổ chức các kỳ thi, cuộc thi cấp quốc gia và cấp tỉnh về khoa học, kỹ thuật, giúp học sinh thể hiện tài năng.</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-number">05</div>
+            <div class="feature-text">
+              <h3>Chăm Sóc Sức Khỏe Học Sinh</h3>
+              <p>Phối hợp với bệnh viện tổ chức khám mắt định kỳ, giáo dục sức khỏe sinh sản cho thanh niên, nâng cao ý thức chăm sóc sức khỏe.</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-number">06</div>
+            <div class="feature-text">
+              <h3>Giáo Dục Về Pháp Luật & Giao Thông</h3>
+              <p>Tuyên truyền, giáo dục pháp luật, an toàn giao thông, hướng dẫn kỹ năng lái xe gắn máy an toàn cho học sinh.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>📍 Địa Chỉ</h3>
+        <ul>
+          <li>Khối 03, Hương Khê</li>
+          <li>Thị xã Hương Khê</li>
+          <li>Hà Tĩnh, Việt Nam</li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>📞 Liên Hệ</h3>
+        <ul>
+          <li><a href="tel:0357580994">0357 580 994</a></li>
+          <li><a href="mailto:hoduccuong2011@gmail.com">hoduccuong2011@gmail.com</a></li>
+          <li><a href="#">thpthuongkhe.hatinh.edu.vn</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>⏰ Giờ Làm Việc</h3>
+        <ul>
+          <li>Thứ Hai - Thứ Sáu: 7:00 - 17:30</li>
+          <li>Thứ Bảy: 7:00 - 12:00</li>
+          <li>Chủ Nhật: Đóng cửa</li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>🌐 Mạng Xã Hội</h3>
+        <ul>
+          <li><a href="https://www.facebook.com/BanTruyenThong.HuongKheHighSchool?locale=vi_VN">Facebook</a></li>
+          <li><a href="https://thpthuongkhe.hatinh.edu.vn/">Website</a></li>
+          
+          
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Trường THPT Hương Khê - Nơi Khơi Nguồn Tri Thức |  Make by: vohoanggiakhanh209@gmai.com</p>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scroll behavior for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href !== '#') {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        }
+      });
+    });
+
+    // Header blur effect on scroll
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.style.background = 'rgba(255, 255, 255, 0.12)';
+      } else {
+        header.style.background = 'var(--glass-bg)';
+      }
+    });
+
+    // Add animation on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animation = 'floatIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.news-card, .info-card, .feature-item').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
