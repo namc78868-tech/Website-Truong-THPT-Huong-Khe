@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thông Báo Mức Thu Các Khoản Năm Học 2025-2026 - Trường THPT Hương Khê</title>
+  <link rel="stylesheet" href="THPT_HuongKhe_giao_dien.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-content">
+      <div class="logo">
+        <span>🎓</span>
+        <div class="logo-text">
+          <div>THPT</div>
+          <div>HƯƠNG KHÊ</div>
+        </div>
+      </div>
+      <nav>
+        <a href="THPT_HuongKhe_noi_dung.html#home">Trang chủ</a>
+        <a href="THPT_HuongKhe_noi_dung.html#news">Tin tức</a>
+        <a href="THPT_HuongKhe_noi_dung.html#about">Về chúng tôi</a>
+        <a href="THPT_HuongKhe_noi_dung.html#features">Thông tin</a>
+        <a href="THPT_HuongKhe_noi_dung.html#contact">Liên hệ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- News Detail Section -->
+    <section class="section" id="news-detail">
+      <div class="container">
+        <article class="news-detail">
+          <span class="news-date">31/12/2025</span>
+          <h2 class="news-detail-title">Thông Báo Mức Thu Các Khoản Năm Học 2025-2026</h2>
+          <img src="https://thpthuongkhe.hatinh.edu.vn/upload/55327/fck/42000742/image(454).png" alt="Thông Báo Mức Thu Các Khoản" style="width: auto; max-width: 800px; height: auto; display: block; margin: 20px auto;">
+          <p class="news-detail-content">Thông báo mức thu các khoản theo Nghị Quyết số 179/2025/NQ-HĐND ngày 10/12/2025 của trường THPT Hương Khê nhằm hỗ trợ hoạt động giáo dục.</p>
+          <a href="THPT_HuongKhe_noi_dung.html" class="back-link">Quay lại trang chủ</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>📍 Địa Chỉ</h3>
+        <ul>
+          <li>Khối 03, Hương Khê</li>
+          <li>Thị xã Hương Khê</li>
+          <li>Hà Tĩnh, Việt Nam</li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>📞 Liên Hệ</h3>
+        <ul>
+          <li><a href="tel:0357580994">0357 580 994</a></li>
+          <li><a href="mailto:hoduccuong2011@gmail.com">hoduccuong2011@gmail.com</a></li>
+          <li><a href="#">thpthuongkhe.hatinh.edu.vn</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>⏰ Giờ Làm Việc</h3>
+        <ul>
+          <li>Thứ Hai - Thứ Sáu: 7:00 - 17:30</li>
+          <li>Thứ Bảy: 7:00 - 12:00</li>
+          <li>Chủ Nhật: Đóng cửa</li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>🌐 Mạng Xã Hội</h3>
+        <ul>
+          <li><a href="https://www.facebook.com/BanTruyenThong.HuongKheHighSchool?locale=vi_VN">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Trường THPT Hương Khê - Nơi Khơi Nguồn Tri Thức |  Make by: vohoanggiakhanh209@gmail.com</p>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scroll behavior for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href !== '#') {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        }
+      });
+    });
+
+    // Header blur effect on scroll
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.style.background = 'rgba(255, 255, 255, 0.12)';
+      } else {
+        header.style.background = 'var(--glass-bg)';
+      }
+    });
+
+    // Add animation on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animation = 'floatIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.news-detail').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
